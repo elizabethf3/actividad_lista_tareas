@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylessheet" type="text/css" href="estilos.css">
+</head>
+<body>
+    <h1>Lista de Tareas</h1> 
+    <input type="text" id="nueva tarea" placeholder="Ingrese una nueva tarea">
+    <button onclick="agregarTarea()">Agregar</button>
+    <ul id="listaTareas"></ul>
+    <script src="script.js"></script>
+</body>
+</html>
+
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+h1{
+    text-align: center;
+    margin-top: 20;
+}
+
+
+input[type="text"] {
+    padding: 8px;
+    width: 60px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+button{
+    padding: 8px 15px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+li{
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    padding: 8px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+completed{
+    text-decoration: line-through;
+    color: #888;
+}
+
+button.delete {
+    margin-left: auto;
+    background-color: #dc3545;
+
+}
+
+function mostrarCompletadas() {
+    const tareas = document.querySelectorAll("li");
+    tareas.forEach(tarea => {
+    if (tarea.classList.contains("completed")) {
+    tarea.style.display = "flex";
+    } else {
+    tarea.style.display = "none";
+    }
+  });
+}
+function mostrarPendientes() {
+    const tareas = document.querySelectorAll("li");
+    tareas.forEach(tarea => {
+    if (!tarea.classList.contains("completed")) {
+    tarea.style.display = "flex";
+    } else {
+    tarea.style.display = "none";
+    }
+  });
+}
+
+document.getElementById("mostrarCompletadas").addEventListener("click", mostrarCompletadas);
+
+document.getElementById("mostrarPendientes").addEventListener("click", mostrarPendientes);
